@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue3</title>
+</head>
+<body>
+    <script type="module">
+        import { createApp, ref } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.0-beta.14/vue.esm-browser.js"
+        createApp({
+            setup() {
+                return {
+                    appName: 'My Clock',
+                    clock: '00:00:00',
+                }
+            },
+
+            created() {
+                console.log("created")
+                this.tick();
+            },
+
+            methods: {
+                tick() {
+                  console.log("tick!!");
+
+                  const date = new Date();  
+	            		let h = date.getHours();  
+		            	let m = date.getMinutes();
+	            		let s = date.getSeconds();
+
+                  if(h < 10) h = '0' + h;
+                  if(m < 10) m = '0' + m;
+                  if(s < 10) s = '0' + s;
+
+                  this.clock = h + ":" + m + ":" + s;
+
+                    setInterval(() => {
+                        this.tick();
+                    }, 1000);
+                }
+            }
+
+        }).mount('#app')
+    </script>
+
+    <div id="app">
+        <p>{{appName}}</p>
+        <p>{{clock}}</p>
+    </div>
+</body>
+</html>

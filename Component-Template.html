@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" conten="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Components Fundamentals</title>
+</head>
+
+<body>
+    <script type="module">
+        Vue.createApp({
+
+        }).component(`click-counter`, {
+            template: `#click-counter-template`,
+            data() {
+                return {
+                    count: 0
+                }
+            }
+        }).mount(`#app`)
+
+    </script>
+
+    <div id="app">
+        <h1>Vue.js Components Fundamentals</h1>
+        <click-counter></click-counter>
+        <click-counter></click-counter>
+        <click-counter></click-counter>
+
+    </div>
+    <script type="text/x-template" id="click-counter-template">
+                <button @click = "count++"> 
+                    the count is : {{count}}
+                </button>
+    </script>
+    <script src="https://unpkg.com/vue@3"></script>
+
+</body>
+
+</html>

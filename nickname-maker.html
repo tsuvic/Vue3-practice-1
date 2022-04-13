@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>nickname-maker</title>
+    </head>
+</html>
+<body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script setup>
+        const appName = 'nickname-maker';
+        const a = 'ニックネーム';
+        const names = [
+                        "たに",
+                        "ひろ",
+                        "みつ",
+                        "John",
+                        "Jack",
+                    ];
+    </script>
+
+    <script type="module">
+        import { reactive, ref } from "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.31/vue.esm-browser.min.js";
+
+        Vue.createApp({
+            setup(){
+                console.log('setup!!');
+                return {
+                    appName: 'nickname-maker',
+                    nickname:'ニックネーム',
+                    names: [
+                        "たに",
+                        "ひろ",
+                        "みつ",
+                        "John",
+                        "Jack",
+                    ]
+                }
+            },
+            // V2の記述
+            // data(){
+            //     console.log("data!!");
+            //     return {
+            //         appName: 'nickname-maker',
+            //         nickname:'ニックネーム',
+            //         names: [
+            //             "たに",
+            //             "ひろ",
+            //             "みつ",
+            //             "John",
+            //             "Jack",
+            //         ]
+            //     }
+            // },
+            created(){
+                console.log("created!!");
+                this.roulettte();
+            },
+            methods: {
+                roulettte(){
+                    console.log("method!!");
+                    let random = Math.random() * this.names.length;
+                    let index = Math.floor(random);
+                    this.nickname = this.names[index];
+                }
+            }
+        }).mount('#app')
+    </script>
+
+    <div id="app">
+        <p class="d-title">
+            {{appName}}
+        </p>
+        <p class="d-line-1">
+            あなたのニックネームは
+        </p>
+        <p class="d-line-2">
+            {{nickname}}
+        </p>
+        <p class="d-line-3">
+            です。
+        </p>
+        <p>
+            {{a}}
+        </p>
+
+    </div>
+</body>
